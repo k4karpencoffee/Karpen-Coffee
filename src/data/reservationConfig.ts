@@ -32,23 +32,23 @@ export const reservationConfig = {
 
   /**
    * Template pesan WhatsApp. Variabel: {name} {date} {time} {guests} {note}
-   * Semua kolom wajib diisi, jadi setiap variabel selalu terisi.
+   * {note} opsional: jika dikosongkan, otomatis diisi emptyNote ("-").
    */
   messageTemplate: [
-  'Halo Kak, saya ingin melakukan reservasi dengan detail sebagai berikut:',
-  '',
-  'RESERVASI KARPEN',
-  'Nama : {name}',
-  'Tanggal : {date}',
-  'Jam : {time} WIB',
-  'Jumlah Orang : {guests} orang',
-  'Permintaan Khusus : {note}',
-  '',
-  'PENTING‼️',
-  'Reservasi baru dianggap terkonfirmasi setelah mendapat balasan dari tim Karpen.',
-  '',
-  'Mohon konfirmasi ketersediaannya ya, Kak. Terima kasih!'].
-  join('\n'),
+    'Halo Kak, saya ingin melakukan reservasi dengan detail sebagai berikut:',
+    '',
+    'RESERVASI KARPEN',
+    'Nama : {name}',
+    'Tanggal : {date}',
+    'Jam : {time} WIB',
+    'Jumlah Orang : {guests} orang',
+    'Permintaan Khusus : {note}',
+    '',
+    'PENTING‼️',
+    'Reservasi baru dianggap terkonfirmasi setelah mendapat balasan dari tim Karpen.',
+    '',
+    'Mohon konfirmasi ketersediaannya ya, Kak. Terima kasih!'].
+    join('\n'),
   /** Isi Permintaan Khusus jika dikosongkan. */
   emptyNote: '-',
 
@@ -78,11 +78,10 @@ export const reservationConfig = {
     guestsLabel: 'Jumlah Orang',
     guestsPlaceholder: 'Pilih jumlah orang',
     guestsUnit: 'orang',
-    noteLabel: 'Permintaan Khusus',
-    noteRequired: 'Mohon isi permintaan khusus Anda (tulis "-" jika tidak ada).',
+    noteLabel: 'Permintaan Khusus (opsional)',
     notePlaceholder:
-    'Jika Anda memiliki permintaan khusus (misalnya kursi anak, area non-rokok, perayaan ulang tahun), silakan tuliskan di sini...',
-    incompleteHint: 'Silakan lengkapi semua kolom: nama, tanggal, jam, jumlah orang, dan permintaan khusus.',
+      'Jika Anda memiliki permintaan khusus (misalnya kursi anak, area non-rokok, perayaan ulang tahun), silakan tuliskan di sini...',
+    incompleteHint: 'Silakan lengkapi nama, tanggal, jam, dan jumlah orang.',
     submit: 'Reservasi via WhatsApp',
     processing: 'Memproses...',
     success: 'Anda akan diarahkan ke WhatsApp untuk konfirmasi reservasi.'

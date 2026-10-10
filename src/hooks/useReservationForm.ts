@@ -6,10 +6,10 @@ import {
   buildReservationLink,
   buildSlots,
   isSelectableDate,
-  normalizeText,
   todayInZone,
-  validateName } from
-'../utils/reservation';
+  validateName
+} from
+  '../utils/reservation';
 
 export type ReservationStatus = 'idle' | 'loading' | 'sent';
 
@@ -30,7 +30,6 @@ export function useReservationForm() {
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState('');
   const [note, setNote] = useState('');
-  const [noteTouched, setNoteTouched] = useState(false);
   const [status, setStatus] = useState<ReservationStatus>('idle');
   const timer = useRef<number>();
 
@@ -44,10 +43,10 @@ export function useReservationForm() {
   const nameValidation = validateName(name);
   // Only show the name error after the user has left the field (or tried to submit).
   const nameError = nameTouched ? nameValidation : '';
-  const noteValidation = normalizeText(note.replace(/[*_]/g, '')) ? '' : reservationConfig.copy.noteRequired;
-  const noteError = noteTouched ? noteValidation : '';
-  // Every field is required before the WhatsApp button is enabled.
-  const complete = Boolean(!nameValidation && validDate && validTime && guests && !noteValidation);
+  // Permintaan Khusus is optional: no validation, an empty value becomes "-" in the WhatsApp message.
+  const noteError = '';
+  // Name, date, time and guests are required before the WhatsApp button is enabled.
+  const complete = Boolean(!nameValidation && validDate && validTime && guests);
 
   const touch = () => setStatus((s) => s === 'sent' ? 'idle' : s);
 
@@ -66,7 +65,6 @@ export function useReservationForm() {
 
   const submit = () => {
     setNameTouched(true);
-    setNoteTouched(true);
     if (!complete || !validDate || status === 'loading') return;
     const url = buildReservationLink({ name, date: validDate, time: validTime, guests, note });
     // Open the tab synchronously (inside the click) so pop-up blockers allow it, then point it to WhatsApp.
@@ -102,7 +100,7 @@ export function useReservationForm() {
     setGuests: update(setGuests),
     setNote: update(setNote),
     noteError,
-    touchNote: () => setNoteTouched(true),
+    touchNote: () => { },
     submit
   };
 }
