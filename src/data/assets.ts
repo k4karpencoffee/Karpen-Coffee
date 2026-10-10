@@ -69,9 +69,9 @@ export const assets = {
 
   /** Lokasi & Ruang: [0] = foto besar atas, [1] = bawah kiri, [2] = bawah kanan. */
   gallery: [
-    { src: "/lokasi__ruang.jpg", alt: 'Kasir Karpen Coffee melayani pelanggan dengan latar jendela hijau', label: '[GALLERY IMAGE 1]', caption: 'Pelayanan Ramah • Kasir Karpen' },
-    { src: "/lokasi__ruang_2.jpg", alt: 'Bar kopi Karpen dengan mesin espresso dan logo Karpen di dinding', label: '[GALLERY IMAGE 2]', caption: 'Suasana Hangat & Adem' },
-    { src: "/lokasi__ruang_3.jpg", alt: 'Pelanggan bersantai di meja kayu outdoor yang teduh', label: '[GALLERY IMAGE 3]', caption: 'Outdoor Area • Teduh & Hijau' }] as
+    { src: "/lokasi__ruang.jpg", alt: 'Bar kopi Karpen dengan mesin espresso dan logo Karpen di dinding', label: '[GALLERY IMAGE 1]', caption: 'Suasana Hangat & Adem' },
+    { src: "/lokasi__ruang_2.jpg", alt: 'Pelanggan bersantai di meja kayu outdoor yang teduh', label: '[GALLERY IMAGE 2]', caption: 'Outdoor Area • Teduh & Hijau' },
+    { src: "/lokasi__ruang_3.jpg", alt: 'Kasir Karpen Coffee melayani pelanggan dengan latar jendela hijau', label: '[GALLERY IMAGE 3]', caption: 'Pelayanan Ramah • Kasir Karpen' }] as
     GalleryImage[],
 
   products: {
@@ -172,7 +172,7 @@ export const assets = {
     // New Dream Coffee
     buzz: "/Buzz.jpg",
     woody: "/Woody.jpg",
-    // Our Main Dish (Best Seller)
+    // Best Seller Food
     chickenKatsuCurry: "/Chicken_Katsu_Curry.jpg",
     chickenPopSambalMatah: "/Chicken_Pop_Sambal_Matah.jpg",
     nasiGorengKarpen: "/Nasi_Goreng_Karpen.jpg",
@@ -180,7 +180,7 @@ export const assets = {
     mieBangpen: "/Mie_Bangpen.jpg",
     mieBagong: "/Mie_Bagong.jpg",
     mieOtama: "/Mie_Otama.jpg",
-    // Our Main Dish
+    // Other Main Dish
     nasiTelurMatah: "/Nasi_Telur_Matah.jpg",
     nasiKulitMatah: "/Nasi_Kulit_Matah.jpg",
     chickenPopHotLava: "/Chicken_Pop_Hot_Lava.jpg",
