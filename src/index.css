@@ -1,0 +1,105 @@
+/* @import url() FONT IMPORTS MUST ALWAYS BE AT THE VERY TOP OF THIS FILE, ABOVE THE TAILWIND IMPORTS — DO NOT DELETE THIS COMMENT */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* CRITICAL: THE FOLLOWING TAILWIND IMPORTS MUST NEVER BE DELETED OR REORDERED — DO NOT DELETE THIS COMMENT */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* END TAILWIND IMPORTS — ALL OTHER CSS MUST GO BELOW THIS LINE */
+
+/* Smooth anchor scrolling only on mouse devices. On phones/tablets it fought Chrome's own
+   "scroll the focused field into view", which made the page jump while typing. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  @apply bg-white font-sans text-ink antialiased;
+  /* clip (not hidden) prevents sideways scroll without breaking sticky headers */
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+img,
+video {
+  max-width: 100%;
+}
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: break-word;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+/* Full-height page shell: dvh follows the real visible height (address bar / keyboard), vh as fallback. */
+.min-h-viewport {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+/* Form fields: never smaller than 16px on phones AND tablets — prevents iOS Safari's auto-zoom on focus
+   (that zoom is what makes the screen "jump" while typing). Laptop keeps the original 14px. */
+@media (max-width: 1023px) {
+  input:not([type='checkbox']):not([type='radio']),
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+/* When a field is scrolled into view, keep it clear of the sticky navbar and the keyboard edge. */
+input,
+textarea,
+select {
+  scroll-margin-top: 96px;
+  scroll-margin-bottom: 32px;
+}
+/* Site header. Opacity follows --nav-solid (set by the Beranda hero; 1 everywhere else).
+   Phones/tablets: solid white, no backdrop-filter (too heavy to repaint on every scroll frame).
+   Laptop: the 12px blur is switched on once by class (.is-solid), never animated per frame. */
+.site-header {
+  background-color: rgb(255 255 255 / var(--nav-solid, 1));
+  border-bottom-color: rgb(229 232 229 / var(--nav-solid, 1));
+}
+@media (min-width: 1024px) {
+  .site-header {
+    background-color: rgb(255 255 255 / calc(var(--nav-solid, 1) * 0.95));
+    transition: backdrop-filter 150ms ease-out, -webkit-backdrop-filter 150ms ease-out;
+  }
+  .site-header.is-solid {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+/* Floating WhatsApp + FAQ buttons. On Beranda they appear after ~20% of the hero (class toggled in FloatingActions). */
+.floating-actions {
+  opacity: 0;
+  transform: translateY(16px) scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.floating-actions.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+/* Keyboard open on a phone/tablet: gone immediately, not clickable, not in the way of any field. */
+.floating-actions.is-typing {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-actions {
+    transition: none;
+  }
+}
