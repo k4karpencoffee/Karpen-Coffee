@@ -48,40 +48,37 @@ export function ImageSlot({
   if (natural && showImage) {
     return (
       <div className={twMerge('relative overflow-hidden', className)} data-asset-slot={label}>
-        <img src={src} alt={alt} loading="lazy" onError={() => setFailed(true)} className={`block h-auto w-full ${imgClassName}`} />
-      </div>);
+        <img src={src} alt={alt} loading="lazy" decoding="async" onError={() => setFailed(true)} className={`block h-auto w-full ${imgClassName}`} />      </div>);
 
   }
 
   return (
     <div className={twMerge('relative overflow-hidden', natural && 'aspect-[4/5]', className)} data-asset-slot={label}>
       {showImage ?
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        onError={() => setFailed(true)}
-        className={`absolute inset-0 h-full w-full ${fit === 'cover' ? 'object-cover' : 'object-contain'} ${
-        position === 'top' ? 'object-top' : ''} ${
-        imgClassName}`} /> :
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          onError={() => setFailed(true)}
+          className={`absolute inset-0 h-full w-full ${fit === 'cover' ? 'object-cover' : 'object-contain'} ${position === 'top' ? 'object-top' : ''} ${imgClassName}`} /> :
 
 
-      <div
-        role="img"
-        aria-label={alt || label}
-        className={`absolute inset-0 ${dark ? 'bg-forest-dark text-white/50' : 'bg-slot text-slot-ink'}`}>
-        
+        <div
+          role="img"
+          aria-label={alt || label}
+          className={`absolute inset-0 ${dark ? 'bg-forest-dark text-white/50' : 'bg-slot text-slot-ink'}`}>
+
           <div
-          className={`absolute rounded-[inherit] border border-dashed ${dark ? 'border-white/20' : 'border-slot-ink/40'} ${size === 'sm' ? 'inset-1' : 'inset-2'}`}
-          aria-hidden="true" />
-        
+            className={`absolute rounded-[inherit] border border-dashed ${dark ? 'border-white/20' : 'border-slot-ink/40'} ${size === 'sm' ? 'inset-1' : 'inset-2'}`}
+            aria-hidden="true" />
+
           <div
-          className={`absolute flex items-center gap-1.5 font-mono uppercase tracking-wider ${size === 'sm' ? 'text-[9px]' : 'text-[11px]'} ${
-          labelPosition === 'center' ?
-          'inset-0 flex-col justify-center text-center' :
-          'bottom-20 right-5 md:bottom-24 md:right-8'}`
-          }>
-          
+            className={`absolute flex items-center gap-1.5 font-mono uppercase tracking-wider ${size === 'sm' ? 'text-[9px]' : 'text-[11px]'} ${labelPosition === 'center' ?
+              'inset-0 flex-col justify-center text-center' :
+              'bottom-20 right-5 md:bottom-24 md:right-8'}`
+            }>
+
             {size === 'md' && <ImageIcon className="h-5 w-5" aria-hidden="true" />}
             <span>{label}</span>
           </div>

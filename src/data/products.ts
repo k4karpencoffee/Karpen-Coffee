@@ -27,7 +27,7 @@ export const menuGroups: MenuGroup[] = [
     id: 'drinks',
     title: 'Minuman',
     subtitle: 'Beverage',
-    description: 'Signature, kopi susu, non-kopi, mocktail & sparkling.',
+    description: 'Nasi, mie, camilan, gorengan, dessert & paket anak.',
     icon: 'coffee',
     image: img.kopiSusu
   },
@@ -51,12 +51,12 @@ export const menuCategories: MenuCategory[] = [
   { id: 'sparkling-drinks', groupId: 'drinks', title: 'Sparkling Drinks' },
   { id: 'new-dream-coffee', groupId: 'drinks', title: 'New Dream Coffee' },
   // MAKANAN (8–12)
+  // MAKANAN (8–12)
   { id: 'our-noodle', groupId: 'food', title: 'Our Noodle' },
   { id: 'our-main-dish', groupId: 'food', title: 'Our Main Dish' },
   { id: 'our-snack', groupId: 'food', title: 'Our Snack' },
   { id: 'our-dessert', groupId: 'food', title: 'Our Dessert' },
   { id: 'kids-meal-combo', groupId: 'food', title: 'Kids Meal Combo & Customizer' }];
-
 
 export const products: Product[] = [
   // ───────── 1. Signature Beverage ─────────
@@ -155,12 +155,11 @@ export const products: Product[] = [
   { id: 'nasi-gila', name: 'Nasi Gila', description: 'Iconic Jakarta street dish: stir-fried beef sausages, meatballs, egg, and spicy relish.', price: 22000, categoryId: 'our-main-dish', tag: 'Rice', image: photo.nasiGila },
   { id: 'curry-fried-rice-scramble-egg', name: 'Curry Fried Rice Scramble Egg', description: 'Fragrant curry rice blanketed under creamy, buttery scrambled eggs.', price: 24000, categoryId: 'our-main-dish', tag: 'Rice', image: photo.curryFriedRiceScrambleEgg },
 
-  // ───────── 10. Our Snack (camilan + gorengan & bites) ─────────
+  // ───────── 10. Our Snack (camilan + gorengan) ─────────
   { id: 'french-fries-bolognese', name: 'French Fries Bolognese', description: 'Crispy shoestring fries topped with savory beef Bolognese sauce.', price: 25000, categoryId: 'our-snack', tag: 'Snack', image: photo.frenchFriesBolognese },
   { id: 'tahu-cabe-garam', name: 'Tahu Cabe Garam', description: 'Crispy tofu cubes tossed with minced garlic, scallions, and red chilies.', price: 18000, categoryId: 'our-snack', tag: 'Snack', image: photo.tahuCabeGaram },
   { id: 'potato-ball', name: 'Potato Ball', description: 'Crispy panko coated mashed potato croquettes with cheese center.', price: 16000, categoryId: 'our-snack', tag: 'Snack', image: photo.potatoBall },
   { id: 'patta-chips', name: 'Patta Chips', description: 'Thin sliced crunchy potato chips tossed in signature spice mix.', price: 35000, categoryId: 'our-snack', tag: 'Snack', image: photo.pattaChips },
-
   { id: 'pangsit-goreng', name: 'Pangsit Goreng', description: 'Crispy golden chicken dumplings served with sweet and sour sauce.', price: 12000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.pangsitGoreng },
   { id: 'tempe-mendoan', name: 'Tempe Mendoan', description: 'Warm thin batter-fried fermented soy cakes with sweet dark soy sambal.', price: 13000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.tempeMendoan },
   { id: 'risol-manis', name: 'Risol Manis', description: 'Crispy rolled pastry filled with sweet chocolate and sliced banana.', price: 16000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.risolManis },

@@ -1,13 +1,81 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Karpen Coffee Website Template</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Karpen Coffee | Coffee Shop di Madiun</title>
+  <meta name="description"
+    content="Karpen Coffee, coffee shop di Pilangbango, Madiun dengan view sawah dan kereta yang melintas. Tempat nyaman untuk ngopi, makan, dan berkumpul." />
+  <meta name="theme-color" content="#0F3D22" />
+  <link rel="canonical" href="https://karpencoffee.vercel.app/" />
+
+  <link rel="icon" type="image/png" href="/LOGOSET2.png" />
+  <link rel="apple-touch-icon" href="/LOGOSET2.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Karpen Coffee" />
+  <meta property="og:locale" content="id_ID" />
+  <meta property="og:title" content="Karpen Coffee | Coffee Shop di Madiun" />
+  <meta property="og:description"
+    content="Coffee shop di Pilangbango, Madiun dengan view sawah dan kereta yang melintas. Better Days with Karpen." />
+  <meta property="og:url" content="https://karpencoffee.vercel.app/" />
+  <meta property="og:image" content="https://karpencoffee.vercel.app/LOGOSET2.png" />
+  <meta property="og:image:alt" content="Logo Karpen Coffee" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Karpen Coffee | Coffee Shop di Madiun" />
+  <meta name="twitter:description"
+    content="Coffee shop di Pilangbango, Madiun dengan view sawah dan kereta yang melintas. Better Days with Karpen." />
+  <meta name="twitter:image" content="https://karpencoffee.vercel.app/LOGOSET2.png" />
+
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CafeOrCoffeeShop",
+        "name": "Karpen Coffee",
+        "url": "https://karpencoffee.vercel.app/",
+        "image": "https://karpencoffee.vercel.app/LOGOSET2.png",
+        "logo": "https://karpencoffee.vercel.app/LOGOSET2.png",
+        "telephone": "+6285156028622",
+        "email": "karpencoffee@gmail.com",
+        "servesCuisine": ["Kopi", "Minuman", "Makanan", "Camilan"],
+        "hasMenu": "https://karpencoffee.vercel.app/menu",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Jl. Sri Sedani, Pilangbango, Kec. Kartoharjo",
+          "addressLocality": "Kota Madiun",
+          "addressRegion": "Jawa Timur",
+          "postalCode": "63119",
+          "addressCountry": "ID"
+        },
+        "openingHoursSpecification": [
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "10:00", "closes": "23:00" },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "10:00",
+            "closes": "23:59"
+          },
+          { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "23:30" }
+        ],
+        "sameAs": ["https://www.instagram.com/karpen.id"]
+      }
+    </script>
+
+  <script>
+    window.va =
+      window.va ||
+      function () {
+        (window.vaq = window.vaq || []).push(arguments);
+      };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/index.tsx"></script>
+</body>
+
 </html>
