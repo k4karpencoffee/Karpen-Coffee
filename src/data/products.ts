@@ -60,12 +60,12 @@ export const menuCategories: MenuCategory[] = [
 
 export const products: Product[] = [
   // ───────── 1. Signature Beverage ─────────
-  { id: 'kopsu-karpen', name: 'Kopi Susu Karpen', description: 'Authentic Indonesian palm sugar coffee with our house espresso blend and silky fresh milk.', price: 22000, categoryId: 'signature-beverage', tag: 'Iced', featured: true, image: assets.featuredProducts.kopsuKarpen },
-  { id: 'canella', name: 'Canella', description: 'Subtle aromatic Ceylon cinnamon infusion layered with smooth Arabica espresso and steamed velvet foam.', price: 24000, categoryId: 'signature-beverage', tag: 'Hot / Ice', image: photo.canella },
-  { id: 'kopsu-durian', name: 'Kopi Susu Durian', description: 'A bold harmonious union of premium tropical durian puree, rich espresso, and fresh condensed cream.', price: 25000, categoryId: 'signature-beverage', tag: 'Iced', image: photo.kopsuDurian },
-  { id: 'hydra', name: 'Hydra', description: 'Crisp botanical espresso refresher combined with zesty blue curaçao undertones and gentle sparkling water.', price: 20000, categoryId: 'signature-beverage', tag: 'Iced', featured: true, image: photo.hydra },
-  { id: 'ruby-jane', name: 'Ruby Jane', description: 'Tart wild berries and floral pomegranate steeped together with our smooth 18-hour cold brew roast.', price: 22000, categoryId: 'signature-beverage', tag: 'Iced', image: photo.rubyJane },
-  { id: 'ayra', name: 'Ayra', description: 'A velvety floral tea-infused espresso blend crowned with silky foam and crushed pistachios.', price: 22000, categoryId: 'signature-beverage', tag: 'Hot / Ice', image: photo.ayra },
+  { id: 'kopsu-karpen', name: 'Kopi Susu Karpen', description: 'Perpaduan kopi susu creamy, pandan, dan mint yang fresh.', price: 22000, categoryId: 'signature-beverage', tag: 'Iced', featured: true, image: assets.featuredProducts.kopsuKarpen },
+  { id: 'canella', name: 'Canella', description: 'Kopi dengan sentuhan raisin butterscotch dan oat milk yang smooth dan creamy.', price: 24000, categoryId: 'signature-beverage', tag: 'Hot / Ice', image: photo.canella },
+  { id: 'kopsu-durian', name: 'Kopi Susu Durian', description: 'Kopi susu durian khas Karpen yang creamy, legit, dan berkarakter.', price: 25000, categoryId: 'signature-beverage', tag: 'Iced', image: photo.kopsuDurian },
+  { id: 'hydra', name: 'Hydra', description: 'Perpaduan syrup mangga dan Yakult yang ringan, segar.', price: 20000, categoryId: 'signature-beverage', tag: 'Iced', featured: true, image: photo.hydra },
+  { id: 'ruby-jane', name: 'Ruby Jane', description: 'Perpaduan sirup strawberry, macchiato, dan oat milk yang lembut dan smooth.', price: 22000, categoryId: 'signature-beverage', tag: 'Iced', image: photo.rubyJane },
+  { id: 'ayra', name: 'Ayra', description: 'Perpaduan Yakult dan strawberry yang ringan dan fresh.', price: 22000, categoryId: 'signature-beverage', tag: 'Hot / Ice', image: photo.ayra },
   { id: 'air-mineral', name: 'Air Mineral', description: 'Air mineral pegunungan alami yang segar dan murni.', price: 7000, categoryId: 'signature-beverage', tag: 'Mineral Water', image: photo.airMineral },
 
   // Signature Beverage — Basic Coffee
@@ -102,14 +102,14 @@ export const products: Product[] = [
   { id: 'teh-tarik', name: 'Teh Tarik', description: 'Hand-pulled foamy milk tea with classic Indonesian sweet tea characteristics.', price: 16000, categoryId: 'signature-beverage', subcategory: 'Tea Based', tag: 'Hot / Ice', image: photo.tehTarik },
 
   // ───────── 2. The Summer ─────────
-  { id: 'coco-breeze', name: 'Coco Breeze', description: 'Pure young coconut water paired with fresh citrus zest and soda.', price: 26000, categoryId: 'the-summer', tag: 'Mocktail', image: photo.cocoBreeze },
-  { id: 'ocean-bliss', name: 'Ocean Bliss', description: 'Blue curaçao citrus and crisp tonic topped with passion fruit seeds.', price: 27000, categoryId: 'the-summer', tag: 'Mocktail', image: photo.oceanBliss },
-  { id: 'bless-berry-rise', name: 'Black Berry Rise', description: 'Wild raspberry reduction with sparkling Valencia orange juice.', price: 27000, categoryId: 'the-summer', tag: 'Mocktail', image: photo.blackBerryRise },
-  { id: 'black-sunset', name: 'Black Sunset', description: 'Cold espresso floating gracefully over fresh squeezed orange tonic.', price: 28000, categoryId: 'the-summer', tag: 'Mocktail', image: photo.blackSunset },
+  { id: 'coco-breeze', name: 'Coco Breeze', description: 'Mint - Hydrococo', price: 20000, categoryId: 'the-summer', tag: 'Mocktail', image: photo.cocoBreeze },
+  { id: 'ocean-bliss', name: 'Ocean Bliss', description: 'Lychee - Sparkling', price: 20000, categoryId: 'the-summer', tag: 'Mocktail', image: photo.oceanBliss },
+  { id: 'bless-berry-rise', name: 'Black Berry Rise', description: 'Espresso - Strawberry', price: 20000, categoryId: 'the-summer', tag: 'Mocktail', image: photo.blackBerryRise },
+  { id: 'black-sunset', name: 'Black Sunset', description: 'Espresso - Orange', price: 20000, categoryId: 'the-summer', tag: 'Mocktail', image: photo.blackSunset },
 
   // ───────── 3. Cold Brew Iced Series ─────────
-  { id: 'butter-cloud', name: 'Butter Cloud', description: 'Signature cold brew topped with thick whipped salted butter foam.', price: 28000, categoryId: 'cold-brew-iced-series', tag: 'Steeped 18 Hours', image: photo.butterCloud },
-  { id: 'berrymon', name: 'Berrymon', description: 'Crisp cold brew combined with lemon juice and mixed mountain berries.', price: 28000, categoryId: 'cold-brew-iced-series', tag: 'Steeped 18 Hours', image: photo.berrymon },
+  { id: 'butter-cloud', name: 'Butter Cloud', description: 'Cold Brew, Butterscotch, Coffee Cream.', price: 24000, categoryId: 'cold-brew-iced-series', tag: 'Steeped 18 Hours', image: photo.butterCloud },
+  { id: 'berrymon', name: 'Berrymon', description: 'Cold Brew, Strawberry, Lemon Syrup.', price: 21000, categoryId: 'cold-brew-iced-series', tag: 'Steeped 18 Hours', image: photo.berrymon },
 
   // ───────── 4. Coffee Crumble Series ─────────
   { id: 'butterscotch-crumble', name: 'Butterschotch Crumble', description: 'Warm butterscotch coffee drink loaded with baked cookie crumbles.', price: 23000, categoryId: 'coffee-crumble-series', tag: 'Dessert In A Cup', image: photo.butterscotchCrumble },
@@ -134,20 +134,20 @@ export const products: Product[] = [
   { id: 'sweet-indigo', name: 'Sweet Indigo', description: 'Butterfly pea herbal tea steeped with sweet lychee soda.', price: 20000, categoryId: 'sparkling-drinks', tag: 'Hot / Ice', image: photo.sweetIndigo },
 
   // ───────── 7. New Dream Coffee ─────────
-  { id: 'kopsu-buzz', name: 'Buzz', description: 'High-caffeine booster with double ristretto extraction, raw wildflower honey, and creamy milk.', price: 48000, categoryId: 'new-dream-coffee', tag: 'Hot / Ice', image: photo.buzz },
-  { id: 'kopsu-woody', name: 'Woody', description: 'Toasted oak barrel essence and earthy nutmeg notes steeped into velvety condensed milk coffee.', price: 48000, categoryId: 'new-dream-coffee', tag: 'Hot / Ice', image: photo.woody },
+  { id: 'kopsu-buzz', name: 'Buzz', description: 'Creamy Coffee milk with butterschotch', price: 48000, categoryId: 'new-dream-coffee', tag: 'Hot / Ice', image: photo.buzz },
+  { id: 'kopsu-woody', name: 'Woody', description: 'Creamy Coffee milk with palm sugar', price: 45000, categoryId: 'new-dream-coffee', tag: 'Hot / Ice', image: photo.woody },
 
   // ───────── 8. Our Noodle ─────────
-  { id: 'mie-cendana', name: 'Mie Cendana', description: 'Signature garlic oil noodles topped with minced savory chicken and fresh green choy sum.', price: 17000, categoryId: 'our-noodle', tag: 'Noodles', featured: true, image: assets.featuredProducts.mieCendana },
-  { id: 'mie-bangpen', name: 'Mie Bangpen', description: 'Spicy wok-tossed noodles coated with spicy house paste and fried shallots.', price: 17000, categoryId: 'our-noodle', tag: 'Noodles • Spicy', image: photo.mieBangpen },
-  { id: 'mie-bagong', name: 'Mie Bagong', description: 'Sweet dark soy-glazed curly noodles served with golden fried dumpling skin.', price: 20000, categoryId: 'our-noodle', tag: 'Noodles', image: photo.mieBagong },
-  { id: 'mie-otama', name: 'Mie Otama', description: 'Soft curly noodles accompanied by a silky poached onsen egg and light broth.', price: 26000, categoryId: 'our-noodle', tag: 'Noodles • Soup', image: photo.mieOtama },
+  { id: 'mie-cendana', name: 'Mie Cendana', description: 'Mie khas karpen dengan rasa manis, gurih dan pedas.', price: 17000, categoryId: 'our-noodle', tag: 'Noodles', featured: true, image: assets.featuredProducts.mieCendana },
+  { id: 'mie-bangpen', name: 'Mie Bangpen', description: 'Mie khas karpen dengan rasa gurih dan pedas.', price: 17000, categoryId: 'our-noodle', tag: 'Noodles • Spicy', image: photo.mieBangpen },
+  { id: 'mie-bagong', name: 'Mie Bagong', description: 'Mie nyemek khas karpen yang kaya akan rasa dan Topping.', price: 20000, categoryId: 'our-noodle', tag: 'Noodles', image: photo.mieBagong },
+  { id: 'mie-otama', name: 'Mie Otama', description: 'Mie kuah Curry khas karpen yang kaya akan rasa dan Topping.', price: 26000, categoryId: 'our-noodle', tag: 'Noodles • Soup', image: photo.mieOtama },
 
   // ───────── 9. Our Main Dish ─────────
-  { id: 'curry-fried-rice-chicken-katsu', name: 'Curry Fried Rice Chicken Katsu', description: 'Aromatic spiced curry fried rice topped with crispy Japanese chicken cutlet.', price: 30000, categoryId: 'our-main-dish', tag: 'Rice', badge: 'Best Seller', badgeTone: 'promo', featured: true, image: assets.featuredProducts.curryFriedRiceChickenKatsu },
-  { id: 'chicken-katsu-curry', name: 'Chicken Katsu Curry', description: 'Crispy panko chicken katsu on steamed rice drenched with rich simmered Japanese curry.', price: 26000, categoryId: 'our-main-dish', tag: 'Rice', badge: 'Best Seller', badgeTone: 'promo', image: photo.chickenKatsuCurry },
-  { id: 'chicken-pop-mattah', name: 'Chicken Pop Sambal Matah', description: 'Crisp chicken bites topped with authentic freshly sliced Balinese lemongrass shallot sambal.', price: 22000, categoryId: 'our-main-dish', tag: 'Rice', badge: 'Best Seller', badgeTone: 'promo', image: photo.chickenPopSambalMatah },
-  { id: 'nasi-goreng-karpen-manis', name: 'Nasi Goreng Karpen — Manis/Asin', description: 'Sweet wok-fried Indonesian jasmine rice with sweet soy, garlic, egg, and crackers.', price: 22000, categoryId: 'our-main-dish', tag: 'Rice', badge: 'Best Seller', badgeTone: 'promo', image: photo.nasiGorengKarpen },
+  { id: 'curry-fried-rice-chicken-katsu', name: 'Curry Fried Rice Chicken Katsu', description: 'Nasi goreng Curry yang gurih ditambah toping katsu yang juicy.', price: 30000, categoryId: 'our-main-dish', tag: 'Rice', badge: 'Best Seller', badgeTone: 'promo', featured: true, image: assets.featuredProducts.curryFriedRiceChickenKatsu },
+  { id: 'chicken-katsu-curry', name: 'Chicken Katsu Curry', description: 'Nasi Sauce Curry yang pekat dan gurih ditambah toping sayur dan katsu yang juicy.', price: 26000, categoryId: 'our-main-dish', tag: 'Rice', badge: 'Best Seller', badgeTone: 'promo', image: photo.chickenKatsuCurry },
+  { id: 'chicken-pop-mattah', name: 'Chicken Pop Sambal Matah', description: 'Perpaduan antara nasi putih ditambah telur + ayam pop dan Sambal Matah yang pedas dan gurih.', price: 22000, categoryId: 'our-main-dish', tag: 'Rice', badge: 'Best Seller', badgeTone: 'promo', image: photo.chickenPopSambalMatah },
+  { id: 'nasi-goreng-karpen-manis', name: 'Nasi Goreng Karpen — Manis/Asin', description: 'Nasi goreng aromatic dan kaya akan Topping dan rasa buatan karpen.', price: 22000, categoryId: 'our-main-dish', tag: 'Rice', badge: 'Best Seller', badgeTone: 'promo', image: photo.nasiGorengKarpen },
   { id: 'nasi-telur-mattah', name: 'Nasi Telur Mattah', description: 'Crispy-edged fried eggs on steamed rice, drenched with aromatic raw sambal matah.', price: 16000, categoryId: 'our-main-dish', tag: 'Rice', image: photo.nasiTelurMatah },
   { id: 'nasi-kulit-mattah', name: 'Nasi Kulit Mattah', description: 'Crispy golden seasoned chicken skin served over jasmine rice and fresh sambal.', price: 18000, categoryId: 'our-main-dish', tag: 'Rice', image: photo.nasiKulitMatah },
   { id: 'chicken-pop-hot-lava', name: 'Chicken Pop Hot Lava', description: 'Bite-sized chicken tossed in intense spicy molten lava sauce.', price: 20000, categoryId: 'our-main-dish', tag: 'Rice • Spicy', image: photo.chickenPopHotLava },
