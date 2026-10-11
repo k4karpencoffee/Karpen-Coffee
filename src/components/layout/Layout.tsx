@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
 import { prefersReducedMotion } from '../../hooks/useHeroScroll';
+import { useEscapeBack } from '../../hooks/useEscapeBack';
 import { FloatingActions } from '../floating/FloatingActions';
 import { Footer } from './Footer';
 import { Header } from './Header';
 
 export function Layout() {
+  useEscapeBack();
   const { pathname, hash, key } = useLocation();
 
   useEffect(() => {
@@ -22,8 +24,8 @@ export function Layout() {
     let tries = 0;
     const go = () => {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });else
-      if (tries++ < 30) frame = requestAnimationFrame(go);
+      if (el) el.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' }); else
+        if (tries++ < 30) frame = requestAnimationFrame(go);
     };
     frame = requestAnimationFrame(go);
     return () => cancelAnimationFrame(frame);
