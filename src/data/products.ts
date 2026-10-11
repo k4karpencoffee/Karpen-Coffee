@@ -35,7 +35,7 @@ export const menuGroups: MenuGroup[] = [
     id: 'food',
     title: 'Makanan',
     subtitle: 'Food',
-    description: 'Nasi, mie, camilan, gorengan & paket anak.',
+    description: 'Nasi, mie, camilan, gorengan, dessert & paket anak.',
     icon: 'utensils',
     image: img.curryRice
   }];
@@ -54,7 +54,7 @@ export const menuCategories: MenuCategory[] = [
   { id: 'our-noodle', groupId: 'food', title: 'Our Noodle' },
   { id: 'our-main-dish', groupId: 'food', title: 'Our Main Dish' },
   { id: 'our-snack', groupId: 'food', title: 'Our Snack' },
-  { id: 'other-gorengan-bites', groupId: 'food', title: 'Other (Gorengan & Bites)' },
+  { id: 'our-dessert', groupId: 'food', title: 'Our Dessert' },
   { id: 'kids-meal-combo', groupId: 'food', title: 'Kids Meal Combo & Customizer' }];
 
 
@@ -155,29 +155,30 @@ export const products: Product[] = [
   { id: 'nasi-gila', name: 'Nasi Gila', description: 'Iconic Jakarta street dish: stir-fried beef sausages, meatballs, egg, and spicy relish.', price: 22000, categoryId: 'our-main-dish', tag: 'Rice', image: photo.nasiGila },
   { id: 'curry-fried-rice-scramble-egg', name: 'Curry Fried Rice Scramble Egg', description: 'Fragrant curry rice blanketed under creamy, buttery scrambled eggs.', price: 24000, categoryId: 'our-main-dish', tag: 'Rice', image: photo.curryFriedRiceScrambleEgg },
 
-  // ───────── 10. Our Snack ─────────
+  // ───────── 10. Our Snack (camilan + gorengan & bites) ─────────
   { id: 'french-fries-bolognese', name: 'French Fries Bolognese', description: 'Crispy shoestring fries topped with savory beef Bolognese sauce.', price: 25000, categoryId: 'our-snack', tag: 'Snack', image: photo.frenchFriesBolognese },
-  { id: 'choco-mountain', name: 'Choco Mountain', description: 'Warm molten chocolate cake with gooey center and cocoa dust.', price: 18000, categoryId: 'our-snack', tag: 'Sweet', image: photo.chocoMountain },
-  { id: 'cheese-cake', name: 'Cheese Cake', description: 'Silky New York style baked cheesecake with buttery graham crust.', price: 22000, categoryId: 'our-snack', tag: 'Sweet', image: photo.cheeseCake },
   { id: 'tahu-cabe-garam', name: 'Tahu Cabe Garam', description: 'Crispy tofu cubes tossed with minced garlic, scallions, and red chilies.', price: 18000, categoryId: 'our-snack', tag: 'Snack', image: photo.tahuCabeGaram },
   { id: 'potato-ball', name: 'Potato Ball', description: 'Crispy panko coated mashed potato croquettes with cheese center.', price: 16000, categoryId: 'our-snack', tag: 'Snack', image: photo.potatoBall },
   { id: 'patta-chips', name: 'Patta Chips', description: 'Thin sliced crunchy potato chips tossed in signature spice mix.', price: 35000, categoryId: 'our-snack', tag: 'Snack', image: photo.pattaChips },
 
-  // ───────── 11. Other (Gorengan & Bites) ─────────
-  { id: 'pangsit-goreng', name: 'Pangsit Goreng', description: 'Crispy golden chicken dumplings served with sweet and sour sauce.', price: 12000, categoryId: 'other-gorengan-bites', tag: 'Gorengan', image: photo.pangsitGoreng },
-  { id: 'tempe-mendoan', name: 'Tempe Mendoan', description: 'Warm thin batter-fried fermented soy cakes with sweet dark soy sambal.', price: 13000, categoryId: 'other-gorengan-bites', tag: 'Gorengan', image: photo.tempeMendoan },
-  { id: 'risol-manis', name: 'Risol Manis', description: 'Crispy rolled pastry filled with sweet chocolate and sliced banana.', price: 16000, categoryId: 'other-gorengan-bites', tag: 'Gorengan', image: photo.risolManis },
-  { id: 'risol-mayo', name: 'Risol Mayo', description: 'Stuffed with smoked beef slice, hard-boiled egg, and creamy Japanese mayo.', price: 16000, categoryId: 'other-gorengan-bites', tag: 'Gorengan', image: photo.risolMayo },
-  { id: 'tahu-bakso-goreng', name: 'Tahu Bakso Goreng', description: 'Deep-fried tofu pockets stuffed with savory beef meatball paste.', price: 18000, categoryId: 'other-gorengan-bites', tag: 'Gorengan', image: photo.tahuBaksoGoreng },
-  { id: 'tahu-bakso-kukus', name: 'Tahu Bakso Kukus', description: 'Steamed soft white tofu stuffed with seasoned ground beef filling.', price: 20000, categoryId: 'other-gorengan-bites', tag: 'Bites', image: photo.tahuBaksoKukus },
-  { id: 'tahu-pop', name: 'Tahu Pop', description: 'Crisp bite-sized tofu poppers. Pilihan rasa: Ori / Balado.', price: 15000, categoryId: 'other-gorengan-bites', tag: 'Ori / Balado', image: photo.tahuPop },
-  { id: 'singkong-keju', name: 'Singkong Keju', description: 'Fluffy Indonesian cassava fried to golden crisp and topped with cheddar.', price: 16000, categoryId: 'other-gorengan-bites', tag: 'Gorengan', image: photo.singkongKeju },
-  { id: 'french-fries', name: 'French Fries', description: 'Classic shoestring potato fries. Pilihan rasa: Ori / Balado.', price: 15000, categoryId: 'other-gorengan-bites', tag: 'Ori / Balado', image: photo.frenchFries },
-  { id: 'chicken-strip', name: 'Chicken Strip', description: 'Panko crusted prime tender chicken fillets served with garlic dip.', price: 18000, categoryId: 'other-gorengan-bites', tag: 'Bites', image: photo.chickenStrip },
-  { id: 'dimsum', name: 'Dimsum', description: 'Steamed chicken and shrimp siomay served with artisan chili oil.', price: 18000, categoryId: 'other-gorengan-bites', tag: 'Bites', image: photo.dimsum },
-  { id: 'mix-platter', name: 'Mix Platter', description: 'Sharing combo of french fries, chicken poppers, sausages, and wonton skins.', price: 20000, categoryId: 'other-gorengan-bites', tag: 'Sharing', image: photo.mixPlatter },
-  { id: 'cheese-stick', name: 'Cheese Stick', description: 'Crispy golden crust with rich melted mozzarella string pull inside.', price: 13000, categoryId: 'other-gorengan-bites', tag: 'Bites', image: photo.cheeseStick },
-  { id: 'cireng', name: 'Cireng', description: 'Chewy tapioca fritters served with authentic spicy tamarind bumbu rujak.', price: 13000, categoryId: 'other-gorengan-bites', tag: 'Gorengan', image: photo.cireng },
+  { id: 'pangsit-goreng', name: 'Pangsit Goreng', description: 'Crispy golden chicken dumplings served with sweet and sour sauce.', price: 12000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.pangsitGoreng },
+  { id: 'tempe-mendoan', name: 'Tempe Mendoan', description: 'Warm thin batter-fried fermented soy cakes with sweet dark soy sambal.', price: 13000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.tempeMendoan },
+  { id: 'risol-manis', name: 'Risol Manis', description: 'Crispy rolled pastry filled with sweet chocolate and sliced banana.', price: 16000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.risolManis },
+  { id: 'risol-mayo', name: 'Risol Mayo', description: 'Stuffed with smoked beef slice, hard-boiled egg, and creamy Japanese mayo.', price: 16000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.risolMayo },
+  { id: 'tahu-bakso-goreng', name: 'Tahu Bakso Goreng', description: 'Deep-fried tofu pockets stuffed with savory beef meatball paste.', price: 18000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.tahuBaksoGoreng },
+  { id: 'tahu-bakso-kukus', name: 'Tahu Bakso Kukus', description: 'Steamed soft white tofu stuffed with seasoned ground beef filling.', price: 20000, categoryId: 'our-snack', tag: 'Bites', image: photo.tahuBaksoKukus },
+  { id: 'tahu-pop', name: 'Tahu Pop', description: 'Crisp bite-sized tofu poppers. Pilihan rasa: Ori / Balado.', price: 15000, categoryId: 'our-snack', tag: 'Ori / Balado', image: photo.tahuPop },
+  { id: 'singkong-keju', name: 'Singkong Keju', description: 'Fluffy Indonesian cassava fried to golden crisp and topped with cheddar.', price: 16000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.singkongKeju },
+  { id: 'french-fries', name: 'French Fries', description: 'Classic shoestring potato fries. Pilihan rasa: Ori / Balado.', price: 15000, categoryId: 'our-snack', tag: 'Ori / Balado', image: photo.frenchFries },
+  { id: 'chicken-strip', name: 'Chicken Strip', description: 'Panko crusted prime tender chicken fillets served with garlic dip.', price: 18000, categoryId: 'our-snack', tag: 'Bites', image: photo.chickenStrip },
+  { id: 'dimsum', name: 'Dimsum', description: 'Steamed chicken and shrimp siomay served with artisan chili oil.', price: 18000, categoryId: 'our-snack', tag: 'Bites', image: photo.dimsum },
+  { id: 'mix-platter', name: 'Mix Platter', description: 'Sharing combo of french fries, chicken poppers, sausages, and wonton skins.', price: 20000, categoryId: 'our-snack', tag: 'Sharing', image: photo.mixPlatter },
+  { id: 'cheese-stick', name: 'Cheese Stick', description: 'Crispy golden crust with rich melted mozzarella string pull inside.', price: 13000, categoryId: 'our-snack', tag: 'Bites', image: photo.cheeseStick },
+  { id: 'cireng', name: 'Cireng', description: 'Chewy tapioca fritters served with authentic spicy tamarind bumbu rujak.', price: 13000, categoryId: 'our-snack', tag: 'Gorengan', image: photo.cireng },
+
+  // ───────── 11. Our Dessert ─────────
+  { id: 'choco-mountain', name: 'Choco Mountain', description: 'Warm molten chocolate cake with gooey center and cocoa dust.', price: 18000, categoryId: 'our-dessert', tag: 'Sweet', image: photo.chocoMountain },
+  { id: 'cheese-cake', name: 'Cheese Cake', description: 'Silky New York style baked cheesecake with buttery graham crust.', price: 22000, categoryId: 'our-dessert', tag: 'Sweet', image: photo.cheeseCake },
 
   // ───────── 12. Kids Meal Combo & Customizer ─────────
   {

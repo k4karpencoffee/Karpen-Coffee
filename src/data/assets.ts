@@ -189,12 +189,10 @@ export const assets = {
     curryFriedRiceScrambleEgg: "/Curry_Fried_Rice_Scrumble_egg.jpg",
     // Our Snack
     frenchFriesBolognese: "/French_Fries_Bolognese.jpg",
-    chocoMountain: "/Choco_Mountain.jpg",
-    cheeseCake: "/Cheese_Cake.jpg",
     tahuCabeGaram: "/Tahu_Cabe_Garam.jpg",
     potatoBall: "/Potato_Ball.jpg",
     pattaChips: "/Patta_Chips.jpg",
-    // Other (Gorengan & Bites)
+    // Our Snack — Gorengan & Bites
     pangsitGoreng: "/Pangsit_Goreng.jpg",
     tempeMendoan: "/Tempe_Mendoan.jpg",
     risolManis: "/Risol_Manis.jpg",
@@ -209,6 +207,9 @@ export const assets = {
     mixPlatter: "/Mix_Platter.jpg",
     cheeseStick: "/Cheese_Stick.jpg",
     cireng: "/Cireng.jpg",
+    // Our Dessert
+    chocoMountain: "/Choco_Mountain.jpg",
+    cheeseCake: "/Cheese_Cake.jpg",
     // Kids Meal
     kidsMeal: "/Kids_Meal.jpg"
   },
