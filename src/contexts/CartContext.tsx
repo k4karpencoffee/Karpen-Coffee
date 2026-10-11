@@ -25,22 +25,30 @@ function lineKey(line: Pick<CartLine, 'productId' | 'addOns'>): string {
   return line.addOns && line.addOns.length > 0 ? `${line.productId}|${line.addOns.join(',')}` : line.productId;
 }
 
-export function CartProvider({ children }: {children: React.ReactNode;}) {
-  const [lines, setLines] = useState<CartLine[]>(() => {
-    try {
-      const raw = window.localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) as CartLine[] : [];
-    } catch {
-      return [];
-    }
-  });
+/** Baca keranjang dari localStorage dan buang data yang strukturnya tidak valid. */
+function loadLines(): CartLine[] {
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(
+      (l) => l && typeof l.productId === 'string' && typeof l.qty === 'number' && l.qty > 0
+    ) as CartLine[];
+  } catch {
+    return [];
+  }
+}
 
+export function CartProvider({ children }: { children: React.ReactNode; }) {
+  const [lines, setLines] = useState<CartLine[]>(loadLines);
+
+  // Simpan ke localStorage setiap kali keranjang berubah
   useEffect(() => {
     try {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(lines));
     } catch {
-
-      /* storage unavailable */}
+      /* storage unavailable */
+    }
   }, [lines]);
 
   const add = useCallback((productId: string, addOns?: string[]) => {
@@ -62,10 +70,10 @@ export function CartProvider({ children }: {children: React.ReactNode;}) {
 
   const decrement = useCallback((key: string) => {
     setLines((prev) =>
-    prev.flatMap((l) => {
-      if (lineKey(l) !== key) return [l];
-      return l.qty > 1 ? [{ ...l, qty: l.qty - 1 }] : [];
-    })
+      prev.flatMap((l) => {
+        if (lineKey(l) !== key) return [l];
+        return l.qty > 1 ? [{ ...l, qty: l.qty - 1 }] : [];
+      })
     );
   }, []);
 
