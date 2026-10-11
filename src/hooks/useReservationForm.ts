@@ -69,6 +69,7 @@ export function useReservationForm() {
     const url = buildReservationLink({ name, date: validDate, time: validTime, guests, note });
     // Open the tab synchronously (inside the click) so pop-up blockers allow it, then point it to WhatsApp.
     const win = window.open('about:blank', '_blank');
+    if (win) win.opener = null;
     setStatus('loading');
     timer.current = window.setTimeout(() => {
       if (win && !win.closed) {
