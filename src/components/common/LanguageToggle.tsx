@@ -9,6 +9,7 @@ interface LanguageToggleProps {
 export function LanguageToggle({ light = false, className = '' }: LanguageToggleProps) {
     const base = 'px-2.5 py-1.5 text-[11px] font-semibold tracking-[0.14em] transition-colors';
     const off = light ? 'text-white/80 hover:text-white' : 'text-ink-muted hover:text-forest';
+    const on = light ? 'bg-white text-forest' : 'bg-forest text-white';
     return (
         <div
             role="group"
@@ -20,7 +21,7 @@ export function LanguageToggle({ light = false, className = '' }: LanguageToggle
                     type="button"
                     aria-pressed={lang === code}
                     onClick={() => lang !== code && setLang(code)}
-                    className={`${base} ${lang === code ? 'bg-forest text-white' : off}`}>
+                    className={`${base} ${lang === code ? on : off}`}>
                     {code.toUpperCase()}
                 </button>
             )}

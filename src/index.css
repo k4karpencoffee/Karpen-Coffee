@@ -15,46 +15,56 @@
     scroll-behavior: smooth;
   }
 }
+
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
+
 body {
   @apply bg-white font-sans text-ink antialiased;
   /* clip (not hidden) prevents sideways scroll without breaking sticky headers */
   overflow-x: clip;
   -webkit-tap-highlight-color: transparent;
 }
+
 img,
 video {
   max-width: 100%;
 }
+
 h1,
 h2,
 h3,
 p {
   overflow-wrap: break-word;
 }
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   scrollbar-width: none;
 }
+
 /* Full-height page shell: dvh follows the real visible height (address bar / keyboard), vh as fallback. */
 .min-h-viewport {
   min-height: 100vh;
   min-height: 100dvh;
 }
+
 /* Form fields: never smaller than 16px on phones AND tablets — prevents iOS Safari's auto-zoom on focus
    (that zoom is what makes the screen "jump" while typing). Laptop keeps the original 14px. */
 @media (max-width: 1023px) {
+
   input:not([type='checkbox']):not([type='radio']),
   textarea,
   select {
     font-size: 16px !important;
   }
 }
+
 /* When a field is scrolled into view, keep it clear of the sticky navbar and the keyboard edge. */
 input,
 textarea,
@@ -62,23 +72,15 @@ select {
   scroll-margin-top: 96px;
   scroll-margin-bottom: 32px;
 }
-/* Site header. Opacity follows --nav-solid (set by the Beranda hero; 1 everywhere else).
-   Phones/tablets: solid white, no backdrop-filter (too heavy to repaint on every scroll frame).
-   Laptop: the 12px blur is switched on once by class (.is-solid), never animated per frame. */
+
+/* Site header: hijau solid di semua halaman & ukuran layar (tidak lagi transparan/blur).
+   Teks, ikon, dan logo di dalamnya selalu putih (lihat Header.tsx: light = true). */
 .site-header {
-  background-color: rgb(255 255 255 / var(--nav-solid, 1));
-  border-bottom-color: rgb(229 232 229 / var(--nav-solid, 1));
+  background-color: #1B5E3B;
+  border-bottom-color: rgb(255 255 255 / 0.15);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.25);
 }
-@media (min-width: 1024px) {
-  .site-header {
-    background-color: rgb(255 255 255 / calc(var(--nav-solid, 1) * 0.95));
-    transition: backdrop-filter 150ms ease-out, -webkit-backdrop-filter 150ms ease-out;
-  }
-  .site-header.is-solid {
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
-}
+
 /* Floating WhatsApp + FAQ buttons. On Beranda they appear after ~20% of the hero (class toggled in FloatingActions). */
 .floating-actions {
   opacity: 0;
@@ -86,11 +88,13 @@ select {
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
 .floating-actions.is-visible {
   opacity: 1;
   transform: none;
   pointer-events: auto;
 }
+
 /* Keyboard open on a phone/tablet: gone immediately, not clickable, not in the way of any field. */
 .floating-actions.is-typing {
   visibility: hidden;
@@ -98,6 +102,7 @@ select {
   pointer-events: none;
   transition: none;
 }
+
 @media (prefers-reduced-motion: reduce) {
   .floating-actions {
     transition: none;

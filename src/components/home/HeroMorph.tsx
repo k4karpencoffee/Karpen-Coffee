@@ -10,9 +10,9 @@ const SMOOTHING = 0.12;
 
 interface Geometry {
   heroH: number;
-  start: {x: number;y: number;};
-  end: {x: number;y: number;s: number;};
-  slot: {x: number;y: number;w: number;h: number;};
+  start: { x: number; y: number; };
+  end: { x: number; y: number; s: number; };
+  slot: { x: number; y: number; w: number; h: number; };
 }
 
 const logo = assets.heroLogo;
@@ -21,29 +21,30 @@ const logo = assets.heroLogo;
  * Navbar logo layers. Each carries its own mix-blend-mode so a non-transparent PNG's white background
  * disappears — blend modes must sit on the fixed element itself (a fixed/transformed wrapper isolates them).
  * With real transparent PNGs (`transparent: true` + `white` set in data/assets.ts) no blending is applied.
+ * Header sekarang selalu hijau solid, jadi hanya layer "white" yang ditampilkan.
  */
 const layers = [
-{
-  key: 'white',
-  src: logo.white || logo.color,
-  blend: logo.white ? undefined : 'screen',
-  filter: logo.white ? undefined : 'grayscale(1) invert(1) brightness(1.6)'
-},
-{
-  key: 'color',
-  src: logo.color,
-  blend: logo.transparent ? undefined : 'multiply',
-  filter: undefined
-}] as
-const;
+  {
+    key: 'white',
+    src: logo.white || logo.color,
+    blend: logo.white ? undefined : 'screen',
+    filter: logo.white ? undefined : 'grayscale(1) invert(1) brightness(1.6)'
+  },
+  {
+    key: 'color',
+    src: logo.color,
+    blend: logo.transparent ? undefined : 'multiply',
+    filter: undefined
+  }] as
+  const;
 
 /**
  * Stradivarius-style morph, driven by ONE scroll progress:
  *  - the <h1> "KARPEN COFFEE" text flies from the hero centre toward the navbar logo slot while fading out
- *  - the image logo in the navbar fades/scales in (white over the hero → color once the navbar is solid)
+ *  - the white image logo in the navbar fades/scales in (header is always solid green)
  * Fully scroll-linked and reversible.
  */
-export function HeroMorph({ title }: {title: string;}) {
+export function HeroMorph({ title }: { title: string; }) {
   const textRef = useRef<HTMLHeadingElement>(null);
   const logoRefs = useRef<(HTMLAnchorElement | null)[]>([]);
   const reduce = useReducedMotion();
@@ -108,17 +109,18 @@ export function HeroMorph({ title }: {title: string;}) {
       text.style.visibility = textOpacity <= 0.001 ? 'hidden' : 'visible';
 
       // Navbar logo: fades in from 55% (overlaps the text fade-out), scale 0.9 → 1.
+      // Header selalu hijau solid → selalu pakai layer putih, layer berwarna disembunyikan.
       const logoOpacity = clamp01((e - 0.55) / 0.45);
       const logoScale = 0.9 + 0.1 * logoOpacity;
       const solid = clamp01(navSolid(p));
-      white.style.opacity = String(logoOpacity * (1 - solid));
-      color.style.opacity = String(logoOpacity * solid);
+      white.style.opacity = String(logoOpacity);
+      color.style.opacity = '0';
       white.style.transform = color.style.transform = `scale(${logoScale})`;
       const clickable = logoOpacity > 0.5;
-      white.style.pointerEvents = clickable && solid < 0.5 ? 'auto' : 'none';
-      color.style.pointerEvents = clickable && solid >= 0.5 ? 'auto' : 'none';
-      white.tabIndex = -1;
-      color.tabIndex = clickable ? 0 : -1;
+      white.style.pointerEvents = clickable ? 'auto' : 'none';
+      color.style.pointerEvents = 'none';
+      white.tabIndex = clickable ? 0 : -1;
+      color.tabIndex = -1;
 
       root.style.setProperty('--nav-solid', String(solid));
 
@@ -152,45 +154,45 @@ export function HeroMorph({ title }: {title: string;}) {
         ref={textRef}
         style={{ visibility: 'hidden', transformOrigin: 'top left', willChange: 'transform, opacity' }}
         className="pointer-events-none fixed left-0 top-0 z-[45] m-0 whitespace-nowrap font-extrabold uppercase leading-[0.95] tracking-tight text-white">
-        
+
         <motion.span
           className="block"
           initial={reduce ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1], delay: 0.1 }}>
-          
+
           {title}
         </motion.span>
       </h1>
 
       {layers.map((layer, i) =>
-      <Link
-        key={layer.key}
-        ref={(el) => logoRefs.current[i] = el}
-        to="/"
-        aria-label={layer.key === 'color' ? logo.alt : undefined}
-        aria-hidden={layer.key === 'white' ? true : undefined}
-        style={{
-          visibility: 'hidden',
-          opacity: 0,
-          transformOrigin: 'left center',
-          willChange: 'transform, opacity',
-          mixBlendMode: layer.blend
-        }}
-        className="fixed z-[45] block focus-visible:outline-none">
-        
+        <Link
+          key={layer.key}
+          ref={(el) => logoRefs.current[i] = el}
+          to="/"
+          aria-label={layer.key === 'white' ? logo.alt : undefined}
+          aria-hidden={layer.key === 'color' ? true : undefined}
+          style={{
+            visibility: 'hidden',
+            opacity: 0,
+            transformOrigin: 'left center',
+            willChange: 'transform, opacity',
+            mixBlendMode: layer.blend
+          }}
+          className="fixed z-[45] block focus-visible:outline-none">
+
           <img
-          src={layer.src}
-          alt={layer.key === 'color' ? logo.alt : ''}
-          width={logo.width}
-          height={logo.height}
-          loading="eager"
-          decoding="async"
-          draggable={false}
-          {...{ fetchpriority: 'high' }}
-          style={{ filter: layer.filter }}
-          className="block h-full w-auto max-w-none select-none object-contain" />
-        
+            src={layer.src}
+            alt={layer.key === 'white' ? logo.alt : ''}
+            width={logo.width}
+            height={logo.height}
+            loading="eager"
+            decoding="async"
+            draggable={false}
+            {...{ fetchpriority: 'high' }}
+            style={{ filter: layer.filter }}
+            className="block h-full w-auto max-w-none select-none object-contain" />
+
         </Link>
       )}
     </>,

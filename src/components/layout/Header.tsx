@@ -12,7 +12,7 @@ import { CartButton } from './CartButton';
 import { MobileNavbar } from './MobileNavbar';
 import { Navbar } from './Navbar';
 
-/** Background/border/blur live in index.css (.site-header). Off the hero the header is forced fully solid. */
+/** Background/border live in index.css (.site-header). Header is always solid green. */
 const solidStyle = { '--nav-solid': 1 } as React.CSSProperties;
 
 const isMenuEntry = () => Boolean((window.history.state as { mobileNav?: boolean; } | null)?.mobileNav);
@@ -32,7 +32,9 @@ export function Header() {
     (y, vh) => !prefersReducedMotion() && navSolid(heroProgress(y, vh)) < 0.5,
     false
   );
-  const light = isHome && overHero && !open;
+
+  // Header selalu hijau solid, jadi teks/ikon/logo selalu putih.
+  const light = true;
 
   const openRef = useRef(open);
   openRef.current = open;
@@ -85,12 +87,10 @@ export function Header() {
     };
   }, [open]);
 
-
   return (
     <header
       // While the mobile menu is open the header sits above the hero title/logo layers (z-45), so nothing covers the menu.
-      className={`site-header ${isHome ? 'fixed inset-x-0' : 'sticky'} top-0 ${open ? 'z-50' : 'z-40'} border-b ${!isHome || open || !overHero ? 'is-solid' : ''}`
-      }
+      className={`site-header ${isHome ? 'fixed inset-x-0' : 'sticky'} top-0 ${open ? 'z-50' : 'z-40'} border-b ${!isHome || open || !overHero ? 'is-solid' : ''}`}
       style={isHome && !open ? undefined : solidStyle}>
 
       <Container className="flex h-16 items-center justify-between gap-6 md:h-[72px]">
@@ -111,13 +111,13 @@ export function Header() {
                 }}
                 className="block h-full w-full">
 
-                <Logo className="h-full w-full" />
+                <Logo variant="footer" className="h-full w-full" />
               </Link>
             }
           </span> :
 
           <Link to="/" aria-label={siteConfig.businessName} className="shrink-0">
-            <Logo />
+            <Logo variant="footer" />
           </Link>
         }
 
@@ -129,8 +129,7 @@ export function Header() {
           <CartButton light={light} />
           <Link
             to={siteConfig.navigation.orderCta.to}
-            className={`hidden h-10 items-center gap-2 whitespace-nowrap rounded-full border px-5 text-[11px] font-semibold uppercase tracking-[0.16em] transition-colors duration-150 md:inline-flex ${light ? 'border-white text-white hover:bg-white hover:text-ink' : 'border-ink text-ink hover:bg-ink hover:text-white'}`
-            }>
+            className="hidden h-10 items-center gap-2 whitespace-nowrap rounded-full border border-white bg-white px-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-forest transition-colors duration-150 hover:bg-mint md:inline-flex">
 
             <ShoppingBagIcon className="h-4 w-4" />
             {siteConfig.navigation.orderCta.label}
@@ -142,8 +141,7 @@ export function Header() {
             aria-controls="mobile-nav"
             aria-label={open ? 'Tutup menu' : 'Buka menu'}
             // 48×48 touch target, single onClick handler, no tap highlight / double-tap delay.
-            className={`-mr-1.5 inline-flex h-12 w-12 shrink-0 touch-manipulation select-none items-center justify-center rounded-full transition-colors duration-150 [-webkit-tap-highlight-color:transparent] lg:hidden ${light ? 'text-white active:bg-white/15' : 'text-ink active:bg-paper'}`
-            }>
+            className="-mr-1.5 inline-flex h-12 w-12 shrink-0 touch-manipulation select-none items-center justify-center rounded-full text-white transition-colors duration-150 [-webkit-tap-highlight-color:transparent] active:bg-white/15 lg:hidden">
 
             {open ? <XIcon className="h-6 w-6" aria-hidden="true" /> : <MenuIcon className="h-6 w-6" aria-hidden="true" />}
           </button>
