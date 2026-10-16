@@ -121,3 +121,38 @@ select {
     transition: none;
   }
 }
+
+/* Transisi masuk halaman. Hanya memakai fill-mode `backwards`: setelah selesai, elemen kembali ke
+   gaya normalnya (tanpa transform/opacity yang tersisa), jadi tidak mengganggu sticky/fixed/z-index.
+   Beranda hanya fade (tanpa geser) karena teks hero dan logo navbar digambar terpisah oleh HeroMorph. */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .page-enter {
+    animation: page-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  }
+
+  .page-fade {
+    animation: page-fade 350ms ease-out backwards;
+  }
+}
