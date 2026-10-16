@@ -19,7 +19,7 @@ export function Cart() {
         <Breadcrumb current={t.breadcrumb} />
         <h1 className="mt-5 text-3xl font-bold tracking-tight text-ink md:text-4xl">{t.title}</h1>
         <p className="mt-2 text-sm text-ink-muted">{t.description}</p>
-        <div className="mt-5 flex max-w-3xl items-start gap-2.5 rounded-xl border border-notice-line bg-notice px-4 py-3 text-xs leading-relaxed text-notice-ink md:text-sm">
+        <div className="mt-5 flex w-full items-start gap-2.5 rounded-xl border border-notice-line bg-notice px-4 py-3 text-xs leading-relaxed text-notice-ink md:text-sm">
           <InfoIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
           <p>
             <span className="font-semibold">{t.deliveryOnlyTitle}</span> {t.deliveryOnlyNote}{' '}
@@ -31,14 +31,14 @@ export function Cart() {
 
         <div className="mt-10">
           {entries.length === 0 ?
-          <CartEmpty /> :
+            <CartEmpty /> :
 
-          <div className="grid items-start gap-8 lg:grid-cols-[1fr_380px]">
+            <div className="grid items-start gap-8 lg:grid-cols-[1fr_380px]">
               <div>
                 <ul className="divide-y divide-line border-y border-line">
                   {entries.map((entry) =>
-                <CartItem key={entry.key} entry={entry} />
-                )}
+                    <CartItem key={entry.key} entry={entry} />
+                  )}
                 </ul>
                 <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
                   <Link to="/menu" className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest hover:underline">
