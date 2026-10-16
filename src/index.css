@@ -73,11 +73,24 @@ select {
   scroll-margin-bottom: 32px;
 }
 
-/* Site header: hijau solid di semua halaman & ukuran layar (tidak lagi transparan/blur).
+/* Site header: transparan di atas hero Beranda, lalu memudar jadi hijau saat di-scroll.
+   --nav-solid (0 → 1) di-set oleh HeroMorph mengikuti scroll (sudah di-smoothing di sana,
+   jadi JANGAN tambah CSS transition di sini). Halaman lain: --nav-solid = 1 (hijau penuh).
    Teks, ikon, dan logo di dalamnya selalu putih (lihat Header.tsx: light = true). */
 .site-header {
-  background-color: #1B5E3B;
-  border-bottom-color: rgb(255 255 255 / 0.15);
+  border-bottom-color: rgb(255 255 255 / calc(0.15 * var(--nav-solid, 1)));
+}
+
+/* Layer warna di belakang isi header. Memakai token `forest` Tailwind (hijau yang sama dengan
+   toggle ID/EN), jadi kalau warna forest diubah di tailwind.config, header ikut berubah. */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -1px 0;
+  z-index: -1;
+  pointer-events: none;
+  @apply bg-forest;
+  opacity: var(--nav-solid, 1);
   box-shadow: 0 2px 12px rgb(0 0 0 / 0.25);
 }
 

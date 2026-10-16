@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { assets } from '../../data/assets';
-import { clamp01, easeInOutCubic, heroProgress, navSolid, prefersReducedMotion } from '../../hooks/useHeroScroll';
+import { clamp01, easeInOutCubic, heroProgress, prefersReducedMotion } from '../../hooks/useHeroScroll';
 
 /** Inertia: fraction of the remaining distance covered per frame (lower = softer, trails the scroll more). */
 const SMOOTHING = 0.12;
@@ -112,7 +112,9 @@ export function HeroMorph({ title }: { title: string; }) {
       // Header selalu hijau solid → selalu pakai layer putih, layer berwarna disembunyikan.
       const logoOpacity = clamp01((e - 0.55) / 0.45);
       const logoScale = 0.9 + 0.1 * logoOpacity;
-      const solid = clamp01(navSolid(p));
+      // Header: transparan di puncak hero, sudah hijau penuh di 20% perjalanan scroll.
+      // Makin kecil angka 0.2 → makin cepat berubah hijau. Nilai ikut di-smoothing (current).
+      const solid = clamp01(p / 0.2);
       white.style.opacity = String(logoOpacity);
       color.style.opacity = '0';
       white.style.transform = color.style.transform = `scale(${logoScale})`;
@@ -136,6 +138,8 @@ export function HeroMorph({ title }: { title: string; }) {
       schedule();
     };
 
+    // Nilai awal supaya header tidak sempat berkedip hijau sebelum frame pertama dirender.
+    root.style.setProperty('--nav-solid', window.scrollY > 0 ? '1' : '0');
     remeasure();
     document.fonts?.ready.then(remeasure).catch(() => undefined);
     window.addEventListener('scroll', schedule, { passive: true });

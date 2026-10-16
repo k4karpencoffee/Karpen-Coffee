@@ -24,7 +24,7 @@ export function CartButton({ light = false }: { light?: boolean; }) {
       <ShoppingCartIcon className="h-5 w-5" aria-hidden="true" />
       {count > 0 &&
         <span
-          className={`absolute -right-0.5 -top-0.5 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-promo px-1 text-[10px] font-bold text-white tabular-nums ring-2 ${light ? 'ring-[#1B5E3B]' : 'ring-white'}`
+          className={`absolute -right-0.5 -top-0.5 inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-promo px-1 text-[10px] font-bold text-white tabular-nums ring-2 ${light ? 'ring-forest' : 'ring-white'}`
           }>
 
           {count}
