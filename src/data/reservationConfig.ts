@@ -1,9 +1,10 @@
+import { localize } from '../i18n/lang';
 /**
  * ============================================================
  *  KONFIGURASI RESERVASI — ubah nilai di sini saja
  * ============================================================
  */
-export const reservationConfig = {
+const reservationConfigId = {
   /** Nomor WhatsApp tujuan reservasi (format internasional, hanya angka, tanpa + atau spasi). */
   whatsappNumber: '6285156028622',
 
@@ -87,3 +88,35 @@ export const reservationConfig = {
     success: 'Anda akan diarahkan ke WhatsApp untuk konfirmasi reservasi.'
   }
 };
+
+export const reservationConfig = localize(reservationConfigId, {
+  copy: {
+    title: 'Table Reservation',
+    description: 'Book your spot at Karpen — we confirm via WhatsApp.',
+    cardTitle: 'Reservation Form',
+    confirmationNote: '⚠️ A reservation is only confirmed once you receive a reply from the Karpen team via WhatsApp.',
+    nameLabel: 'Name',
+    namePlaceholder: 'Your full name',
+    nameRequired: 'Please enter your name.',
+    nameTooShort: 'Name must be at least 2 characters.',
+    nameTooLong: 'Name must be at most 50 characters.',
+    dateLabel: 'Date',
+    prevMonth: 'Previous month',
+    nextMonth: 'Next month',
+    todaySuffix: '(today)',
+    noDateSelected: 'No date selected yet',
+    selectedDateLabel: 'Selected date:',
+    timeLabel: 'Time',
+    timePlaceholder: 'Select time',
+    timeDisabledPlaceholder: 'Select a date first',
+    guestsLabel: 'Number of Guests',
+    guestsPlaceholder: 'Select number of guests',
+    guestsUnit: 'guests',
+    noteLabel: 'Special Requests (optional)',
+    notePlaceholder: 'If you have special requests (e.g. a child seat, non-smoking area, birthday celebration), please write them here...',
+    incompleteHint: 'Please complete your name, date, time, and number of guests.',
+    submit: 'Reserve via WhatsApp',
+    processing: 'Processing...',
+    success: 'You will be redirected to WhatsApp to confirm your reservation.'
+  }
+});

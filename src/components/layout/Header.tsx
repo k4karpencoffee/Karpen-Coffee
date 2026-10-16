@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { MenuIcon, ShoppingBagIcon, XIcon } from 'lucide-react';
 import { siteConfig } from '../../data/siteConfig';
+import { LanguageToggle } from '../common/LanguageToggle';
 import { heroProgress, navSolid, prefersReducedMotion, useScrollFlag } from '../../hooks/useHeroScroll';
 import { getNavItems } from '../../utils/navigation';
 import { Container } from '../common/Container';
@@ -124,6 +125,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <StatusPill className="hidden xl:inline-flex" />
+          <LanguageToggle light={light} className="hidden lg:inline-flex" />
           <CartButton light={light} />
           <Link
             to={siteConfig.navigation.orderCta.to}

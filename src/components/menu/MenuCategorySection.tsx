@@ -2,6 +2,7 @@ import React from 'react';
 import type { MenuCategory, Product } from '../../types/content';
 import { subcategoriesOf, subcategoryAnchor } from '../../utils/menuAnchors';
 import { ProductGrid } from './ProductGrid';
+import { tr } from '../../i18n/lang';
 
 interface MenuCategorySectionProps {
   category: MenuCategory;
@@ -20,7 +21,7 @@ export function MenuCategorySection({ category, products }: MenuCategorySectionP
       {category.description && <p className="mt-2 max-w-2xl text-sm text-ink-muted">{category.description}</p>}
 
       {ungrouped.length > 0 &&
-      <div className="mt-6">
+        <div className="mt-6">
           <ProductGrid products={ungrouped} categoryLabel={category.title} />
         </div>
       }
@@ -39,7 +40,7 @@ export function MenuCategorySection({ category, products }: MenuCategorySectionP
       })}
 
       {products.length === 0 &&
-      <p className="mt-6 rounded-xl border border-dashed border-line p-6 text-sm text-ink-faint">[NO PRODUCTS IN THIS CATEGORY]</p>
+        <p className="mt-6 rounded-xl border border-dashed border-line p-6 text-sm text-ink-faint">{tr('[BELUM ADA MENU DI KATEGORI INI]', '[NO MENU IN THIS CATEGORY YET]')}</p>
       }
     </section>);
 

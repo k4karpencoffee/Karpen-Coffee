@@ -1,4 +1,5 @@
 import { reservationConfig } from '../data/reservationConfig';
+import { lang } from '../i18n/lang';
 import { fillTemplate } from './whatsapp';
 
 /**
@@ -7,12 +8,21 @@ import { fillTemplate } from './whatsapp';
  * so nothing shifts by a day. Month lengths, leap years and year changes come from Date itself.
  */
 
-// Nama hari & bulan bahasa Indonesia (indeks hari = Date.getDay(), 0 = Minggu).
-export const DAY_NAMES = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-export const DAY_INITIALS = ['M', 'S', 'S', 'R', 'K', 'J', 'S'];
-export const MONTH_NAMES = [
-'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+// Nama hari & bulan (indeks hari = Date.getDay(), 0 = Minggu).
+// Versi Indonesia dipakai untuk pencocokan hari libur dan untuk pesan WhatsApp ke admin.
+export const DAY_NAMES_ID = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+export const MONTH_NAMES_ID = [
+  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+  'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+
+// Versi yang tampil di layar mengikuti bahasa pilihan pengunjung.
+export const DAY_NAMES = lang === 'en' ?
+  ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] : DAY_NAMES_ID;
+export const DAY_INITIALS = lang === 'en' ?
+  ['S', 'M', 'T', 'W', 'T', 'F', 'S'] : ['M', 'S', 'S', 'R', 'K', 'J', 'S'];
+export const MONTH_NAMES = lang === 'en' ?
+  ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'] : MONTH_NAMES_ID;
 
 
 export interface ZonedToday {
@@ -43,7 +53,7 @@ export function todayInZone(now: Date, timeZone: string): ZonedToday {
 export const makeDate = (year: number, month: number, day: number) => new Date(year, month, day);
 export const addDays = (d: Date, days: number) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + days);
 export const sameDay = (a: Date | null, b: Date | null) =>
-!!a && !!b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+  !!a && !!b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
 export const dateKey = (d: Date) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
 
 /** Whole days from a to b (DST-safe). */
@@ -54,9 +64,12 @@ export function daysBetween(a: Date, b: Date): number {
 }
 
 /** "9 Oktober 2026", or "Jumat, 9 Oktober 2026" with `withDay` (day name computed from the Date). */
-export function formatDate(d: Date, withDay = false): string {
-  const text = `${d.getDate()} ${MONTH_NAMES[d.getMonth()]} ${d.getFullYear()}`;
-  return withDay ? `${DAY_NAMES[d.getDay()]}, ${text}` : text;
+/** forMessage = true: selalu pakai nama hari/bulan Indonesia (untuk pesan WhatsApp ke admin). */
+export function formatDate(d: Date, withDay = false, forMessage = false): string {
+  const months = forMessage ? MONTH_NAMES_ID : MONTH_NAMES;
+  const days = forMessage ? DAY_NAMES_ID : DAY_NAMES;
+  const text = `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  return withDay ? `${days[d.getDay()]}, ${text}` : text;
 }
 
 export const formatMonth = (year: number, month: number) => `${MONTH_NAMES[month]} ${year}`;
@@ -74,7 +87,7 @@ const toMinutes = (hhmm: string) => {
   return h * 60 + m;
 };
 const toHhmm = (minutes: number) =>
-`${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+  `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
 
 export function buildSlots(first: string, last: string, interval: number): string[] {
   const slots: string[] = [];
@@ -96,7 +109,7 @@ const closedDateKeys = new Set(
   })
 );
 const closedWeekdays = new Set(
-  reservationConfig.closedWeekdays.map((name) => DAY_NAMES.findIndex((n) => n.toLowerCase() === name.toLowerCase()))
+  reservationConfig.closedWeekdays.map((name) => DAY_NAMES_ID.findIndex((n) => n.toLowerCase() === name.toLowerCase()))
 );
 
 export const lastBookableDate = (today: ZonedToday) => addDays(today.date, reservationConfig.maxBookingDays);
@@ -139,7 +152,7 @@ export function buildReservationMessage({ name, date, time, guests, note }: Rese
   const cfg = reservationConfig;
   return fillTemplate(cfg.messageTemplate, {
     name: sanitizeForWhatsApp(name),
-    date: formatDate(date, true),
+    date: formatDate(date, true, true),
     time,
     guests,
     note: sanitizeForWhatsApp(note) || cfg.emptyNote

@@ -1,4 +1,5 @@
 import type { DaySchedule } from '../types/content';
+import { tr } from '../i18n/lang';
 
 export type OpenStatus = 'open' | 'closing-soon' | 'opening-soon' | 'closed';
 
@@ -41,7 +42,7 @@ function closeMinutes(d: DaySchedule): number {
   return c <= o ? c + 1440 : c;
 }
 
-function zonedNow(date: Date, timeZone: string): {day: number;minutes: number;} {
+function zonedNow(date: Date, timeZone: string): { day: number; minutes: number; } {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone,
     weekday: 'short',
@@ -62,7 +63,7 @@ export function formatTime(time: string): string {
 }
 
 export function formatRange(d: DaySchedule | undefined): string {
-  if (!d || d.closed) return 'Tutup';
+  if (!d || d.closed) return tr('Tutup', 'Closed');
   return `${formatTime(d.open)} – ${formatTime(d.close)}`;
 }
 
@@ -110,8 +111,8 @@ export function getLiveHours(date: Date, cfg: HoursConfig): LiveHours {
 }
 
 /** Groups consecutive days with identical hours, e.g. "Selasa – Sabtu". Expects display order (Senin → Minggu). */
-export function groupSchedule(schedule: DaySchedule[]): {label: string;range: string;days: number[];}[] {
-  const groups: {label: string;range: string;days: number[];first: string;last: string;}[] = [];
+export function groupSchedule(schedule: DaySchedule[]): { label: string; range: string; days: number[]; }[] {
+  const groups: { label: string; range: string; days: number[]; first: string; last: string; }[] = [];
   schedule.forEach((d) => {
     const range = formatRange(d);
     const last = groups[groups.length - 1];
@@ -126,7 +127,7 @@ export function groupSchedule(schedule: DaySchedule[]): {label: string;range: st
 }
 
 /** Calendar day in the given time zone: weekday (0 = Minggu) + ISO date "YYYY-MM-DD". */
-export function getZonedDate(date: Date, timeZone: string): {day: number;iso: string;} {
+export function getZonedDate(date: Date, timeZone: string): { day: number; iso: string; } {
   const parts = new Intl.DateTimeFormat('en-US', {
     timeZone,
     weekday: 'short',

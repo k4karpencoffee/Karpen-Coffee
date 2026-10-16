@@ -3,6 +3,7 @@ import { CheckIcon } from 'lucide-react';
 import { Modal } from '../common/Modal';
 import type { Product } from '../../types/content';
 import { formatPrice } from '../../utils/currency';
+import { tr } from '../../i18n/lang';
 
 interface AddOnPickerProps {
   product: Product;
@@ -19,7 +20,7 @@ export function AddOnPicker({ product, open, onClose, onConfirm }: AddOnPickerPr
   const ready = selected.length >= min;
 
   const toggle = (option: string) =>
-  setSelected((prev) => prev.includes(option) ? prev.filter((o) => o !== option) : [...prev, option]);
+    setSelected((prev) => prev.includes(option) ? prev.filter((o) => o !== option) : [...prev, option]);
 
   const close = () => {
     setSelected([]);
@@ -34,31 +35,29 @@ export function AddOnPicker({ product, open, onClose, onConfirm }: AddOnPickerPr
   };
 
   return (
-    <Modal open={open} onClose={close} title={`Pilih add on ${product.name}`}>
+    <Modal open={open} onClose={close} title={tr(`Pilih tambahan ${product.name}`, `Choose add-ons for ${product.name}`)}>
       <h2 className="pr-10 text-lg font-bold text-ink">{product.name}</h2>
       <p className="mt-1 text-sm text-ink-muted">
-        Pilih minimal {min} add on · {formatPrice(product.price)}
+        {tr(`Pilih minimal ${min} pilihan tambahan`, `Choose at least ${min} add-ons`)} · {formatPrice(product.price)}
       </p>
 
       <fieldset className="mt-5">
-        <legend className="sr-only">Add on</legend>
+        <legend className="sr-only">{tr('Pilihan tambahan', 'Add-ons')}</legend>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {options.map((option) => {
             const checked = selected.includes(option);
             return (
               <label
                 key={option}
-                className={`flex min-h-[44px] cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-sm transition-colors duration-150 ${
-                checked ? 'border-forest bg-mint text-forest' : 'border-line text-ink hover:border-forest/40'}`
+                className={`flex min-h-[44px] cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-sm transition-colors duration-150 ${checked ? 'border-forest bg-mint text-forest' : 'border-line text-ink hover:border-forest/40'}`
                 }>
-                
+
                 <input type="checkbox" className="sr-only" checked={checked} onChange={() => toggle(option)} />
                 <span
-                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border ${
-                  checked ? 'border-forest bg-forest text-white' : 'border-line bg-white'}`
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border ${checked ? 'border-forest bg-forest text-white' : 'border-line bg-white'}`
                   }
                   aria-hidden="true">
-                  
+
                   {checked && <CheckIcon className="h-3.5 w-3.5" />}
                 </span>
                 {option}
@@ -70,15 +69,15 @@ export function AddOnPicker({ product, open, onClose, onConfirm }: AddOnPickerPr
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className={`text-xs font-medium ${ready ? 'text-forest' : 'text-ink-muted'}`} aria-live="polite">
-          {selected.length} dipilih{ready ? '' : ` · pilih ${min - selected.length} lagi`}
+          {selected.length} {tr('dipilih', 'selected')}{ready ? '' : tr(` · pilih ${min - selected.length} lagi`, ` · choose ${min - selected.length} more`)}
         </p>
         <button
           type="button"
           onClick={confirm}
           disabled={!ready}
           className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-forest px-5 text-sm font-semibold text-white transition-colors duration-150 hover:bg-forest/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-line disabled:text-ink-faint">
-          
-          Tambah ke Keranjang
+
+          {tr('Tambah ke Keranjang', 'Add to Cart')}
         </button>
       </div>
     </Modal>);
