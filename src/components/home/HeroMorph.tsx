@@ -138,8 +138,9 @@ export function HeroMorph({ title }: { title: string; }) {
       schedule();
     };
 
-    // Nilai awal supaya header tidak sempat berkedip hijau sebelum frame pertama dirender.
-    root.style.setProperty('--nav-solid', window.scrollY > 0 ? '1' : '0');
+    // Nilai awal 0 (transparan): Layout selalu me-scroll ke atas saat pindah halaman, jadi header tidak
+    // perlu sempat hijau satu frame sebelum frame pertama dirender.
+    root.style.setProperty('--nav-solid', '0');
     remeasure();
     document.fonts?.ready.then(remeasure).catch(() => undefined);
     window.addEventListener('scroll', schedule, { passive: true });
